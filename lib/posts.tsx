@@ -11,9 +11,9 @@ export function getSortedPostsData() {
     // remove <.md> to get file id 
     const id = fileName.replace(/\.md$/, '');
   
-    // read markdown file as string
+    // read markdown file as str
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    
+
   })
 }
