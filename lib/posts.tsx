@@ -15,7 +15,7 @@ export function getSortedPostsData() {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-    // use gray-matter to parse the post metadata section
+    // use gray-matter to parse the post metadata
     const matterResult = matter(fileContents);
 
     const blogPost: BlogPost = {
