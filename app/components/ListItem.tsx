@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import getFormateedDate from "@/lib/getFormattedDate"
+import getFormattedDate from "@/lib/getFormattedDate"
 
 type Props = {
   post: BlogPost
@@ -7,9 +7,17 @@ type Props = {
 
 export default function ListItem({post}: Props) {
   const { id, title, date }  = post 
-  return (
-    <div className="">
+  const formattedDate = getFormattedDate(date)
 
-    </div>
+  return (
+    <li className="mt-4 text-2xl dark:text=white/90">
+      <Link className="underline hover:text-black/70 dark:hover:text-white" href={`/posts/${id}`}>
+        {title}
+      </Link>
+      <br />
+      <p className="text-sm mt-1">
+        {formattedDate}
+      </p>
+    </li>
   )
 }
