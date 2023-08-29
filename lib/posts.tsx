@@ -23,5 +23,10 @@ export function getSortedPostsData() {
       title: matterResult.data.title,
       date: matterResult.data.date,
     }
-  })
+
+    // combine data with the id
+    return blogPost
+  });
+  // Sort posts by date
+  return allPostsData.sort((a, b) => a.date < b.date ? 1 : -1)
 }
