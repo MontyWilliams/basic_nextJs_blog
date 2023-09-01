@@ -11,6 +11,7 @@ export default function ListItem({post}: Props) {
 
   return (
     <li className="mt-4 text-2xl dark:text=white/90">
+      {/*  We use the Id to dynamically render the posts dir */}
       <Link className="underline hover:text-black/70 dark:hover:text-white" href={`/posts/${id}`}>
         {title}
       </Link>
