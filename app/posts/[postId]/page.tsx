@@ -2,7 +2,15 @@ import { getSortedPostsData, getPostData } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import getFormattedDate from '@/lib/getFormattedDate'
 import Link from 'next/link'
+import DOMPurify from 'isomorphic-dompurify';
 
+export function generateStaticParams() {
+  const posts = getSortedPostsData() //deduped
+  
+  return posts.map((post) => {
+    postId: post.id 
+  })
+}
 
 export function generateMetadata({ params }: { params: { postId: string}}) {
 
@@ -30,6 +38,7 @@ export default async function Post({ params }: { params: { postId: string}}) {
   }
 
   const { title, date, contentHtml } = await getPostData(postId)
+  const cleanContentHtml = DOMPurify.sanitize(contentHtml)
 
   const formattedDate = getFormattedDate(date)
   
@@ -40,7 +49,7 @@ export default async function Post({ params }: { params: { postId: string}}) {
         {formattedDate}
       </p>
       <article>
-        <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        <section dangerouslySetInnerHTML={{ __html: cleanContentHtml }} />
         <p>
           <Link href="/"> Back to home</Link>
         </p>
