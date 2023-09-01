@@ -40,11 +40,10 @@ export default async function Post({ params }: { params: { postId: string}}) {
         {formattedDate}
       </p>
       <article>
-        <section dangerouslySetInnerHTML={{ __html: contentHtml }}>
-          <p>
-            <Link href="/"> Back to home</Link>
-          </p>
-        </section>
+        <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        <p>
+          <Link href="/"> Back to home</Link>
+        </p>
       </article>
     </main>
   )
