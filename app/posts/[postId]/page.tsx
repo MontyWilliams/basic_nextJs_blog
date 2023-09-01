@@ -1,4 +1,4 @@
-import { getSortedPostsData } from '@/lib/posts'
+import { getSortedPostsData, getPostData } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 
 
@@ -18,7 +18,7 @@ export function generateMetadata({ params }: { params: { postId: string}}) {
   }
 }
 
-export default function Post({ params }: { params: { postId: string}}) {
+export default async function Post({ params }: { params: { postId: string}}) {
 
   const posts = getSortedPostsData() //Automatically de-duplicated by next js 13 
   const postId = params.postId
@@ -26,6 +26,8 @@ export default function Post({ params }: { params: { postId: string}}) {
   if(!posts.find(post => post.id === postId )) {
     return notFound()
   }
+
+  const { title, date, contentHtml } = await getPostData(postId)
   return (
     <>
     </>
