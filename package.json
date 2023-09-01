@@ -17,6 +17,7 @@
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "gray-matter": "^4.0.3",
+    "isomorphic-dompurify": "^1.8.0",
     "jsdom": "^22.1.0",
     "next": "13.4.19",
     "postcss": "8.4.28",
